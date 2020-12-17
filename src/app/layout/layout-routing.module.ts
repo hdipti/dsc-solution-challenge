@@ -7,15 +7,12 @@ const routes: Routes = [
         path: '',
         component: LayoutComponent,
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'prefix' },
-            { path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
-            { path: 'charts', loadChildren: () => import('./charts/charts.module').then(m => m.ChartsModule) },
-            { path: 'tables', loadChildren: () => import('./tables/tables.module').then(m => m.TablesModule) },
-            { path: 'forms', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
-            { path: 'bs-element', loadChildren: () => import('./bs-element/bs-element.module').then(m => m.BsElementModule) },
-            { path: 'grid', loadChildren: () => import('./grid/grid.module').then(m => m.GridModule) },
-            { path: 'components', loadChildren: () => import('./bs-component/bs-component.module').then(m => m.BsComponentModule) },
-            { path: 'blank-page', loadChildren: () => import('./blank-page/blank-page.module').then(m => m.BlankPageModule) }
+            { path: '', redirectTo: 'home', pathMatch: 'prefix' },
+            { path: 'home', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule) },
+            { path: 'sc2021', loadChildren: () => import('./sc2021/sc2021.module').then(m => m.Sc2021Module) },
+            { path: 'findteam', loadChildren: () => import('./findteam/findteam.module').then(m => m.FindteamModule) },
+            { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
+            { path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule) }
         ]
     }
 ];
