@@ -1,42 +1,109 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="head-banner">
+
+<div>
+  <div class="head-banner">
   <h1>Welcome to the DSC blog</h1>
   <p>Get the inside scoop on what's going on behind the scene</p>
-</div>
-
-<script>
-
-$scope.posts = [
-{
-title:"Almonds are good for Health",
-content:"Almonds contain high amounts of HDL which helps reduce cholestrol. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus quam leo,id tristique sapien viverra eu. Maecenas ipsum lectus, suscipit auctor tristique in, venenatis ut nisl. Quisque eget bibendum libero. Nam nec mi augue."
-},
-{
-title:"Sugar is bad for health",
-content:"Sugar besides being bad for diabetes, it also causes overweight and obesity problems. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus quam leo, id tristique sapien viverra eu. Maecenas ipsum lectus, suscipit auctor tristique in."
-},
-{
-title:"Cut down your carbs!!!",
-content:"Sugar besides being bad for diabetes, it also causes overweight and obesity problems.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rhoncus quam leo, id tristique  sapien viverra eu. Maecenas ipsum lectus, suscipit auctor tristique in, venenatis ut nisl. Quisque eget bibendum libero. Nam nec mi augue."
-}
-
-];
-
-
-
-</script>
-
-<div></div>
-
-<h1>Articles</h1>
- <!-- <accordion>
-   <accordion-group heading=" {{post.title}}" ng-repeat="post in posts">
-         {{post.content}}
-   </accordion-group>
-</accordion>  -->
-
-<div class="foot-banner">
-  <h2>Contact Us</h2>
-  <p>Would love to hear from you</p>
-</div>
+  </div>
+  <h3>Articles</h3>
+  <!-- <accordion>
+    <accordion-group heading=" {{post.title}}" ng-repeat="post in posts">
+          {{post.content}}
+    </accordion-group>
+  </accordion>  -->
+  <div>
+    <!-- <ngb-accordion [closeOthers]="true">
+    <ngb-panel *ngFor="let post of posts | async" title="{{post.title}}">
+      <ng-template ngbPanelContent>
+         <app-plan-row class="content" *ngFor="let row of planRow.rows" [row]="row"></app-plan-row> 
+        {{post.content}}
+      </ng-template>
+    </ngb-panel> -->
+  </div>
+    <ngb-accordion>
+      <ngb-panel title="Panel One">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Panel Two">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+            <ngb-panel title="Panel Three">
+        <ng-template ngbPanelContent>
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
+          aute.
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+  
+  <!-- <div class="foot-banner">
+    <h2>Contact Us</h2>
+    <p>Would love to hear from you</p>
+  </div> -->
+ </div> 
 

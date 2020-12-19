@@ -8,11 +8,8 @@ import { LoggerService } from '@asx/core/logger/logger.service';
 })
 export class AppComponent implements OnInit {
     constructor( private logger: LoggerService) {
-    	this.logger.log("App Component message logged to console");
+    this.logger.log('App Component message logged to console');
     }
 
-    ngOnInit() {
-
-    	
-    }
+    ngOnInit() {}
 }

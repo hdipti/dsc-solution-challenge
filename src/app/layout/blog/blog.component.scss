@@ -30,3 +30,9 @@
     bottom: 0;
     width: 100%;
 }
+
+ngb-accordion {
+  height: 500px;
+  display: block;
+  overflow-y: scroll; 
+}

@@ -1,9 +1,35 @@
-<div class="head-banner">
-  <h1>Find team mates</h1>
-  <p>When it comes to teams, the bigger the better!</p>
-</div>
-
-<div class="foot-banner">
-  <h2>Register here</h2>
-  <p>Signup to contact other members</p>
+<div>
+  <div class="head-banner">
+    <h1>Find team mates</h1>
+    <p>When it comes to teams, the bigger the better!</p>
+  </div>
+  <h2 class="text-muted">Meet our challengers <small>2021</small></h2>
+  <div class="row">
+      <div class="col-md-12">
+          <ngb-carousel>
+              <ng-template ngbSlide *ngFor="let slider of sliders">
+                  <img class="img-fluid mx-auto d-block" [src]="slider.imagePath" alt="Random first slide" width="100%">
+                  <div class="carousel-caption">
+                      <h3>{{slider.label}}</h3>
+                      <p>{{slider.text}}</p>
+                  </div>
+              </ng-template>
+          </ngb-carousel>
+      </div>
+  </div>
+  <h2 class="text-muted">Meet our challengers <small>2021</small></h2>
+  <!-- <h2 class="text-muted">Meet our challengers <small>2021</small></h2> -->
+  <div class="foot-banner">
+    <div class="row">
+      <div class="col-xl-3 col-lg-6">
+        <h2>Register here</h2>
+        <p>Signup to contact other members</p>
+      </div>
+      <div class="col-xl-3 col-lg-6"> </div>
+      <div class="col-xl-3 col-lg-6">
+        <a class="btn rounded-btn" [routerLink]="['/register']">{{ 'Register' }}</a>&nbsp;
+        <a class="btn rounded-btn" [routerLink]="['/signup']">{{ 'Log in' }}</a>
+      </div>
+    </div>
+  </div>
 </div>
