@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS sc2021_schema.`posts` (
   `date` datetime NOT NULL,
   `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(20) COLLATE utf8_bin NOT NULL DEFAULT 'draft',
-  `type` varchar(10) COLLATE utf8_bin NOT NULL,
+  `post_type` varchar(10) COLLATE utf8_bin NOT NULL,
   `like_count` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`post_ID`),
   CONSTRAINT fk_author_ID
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS sc2021_schema.`posts` (
 CREATE TABLE IF NOT EXISTS sc2021_schema.`comments` (
   `comment_ID` INT UNSIGNED unsigned NOT NULL AUTO_INCREMENT,
   `post_ID` INT UNSIGNED unsigned NOT NULL,
-  `count` INT UNSIGNED unsigned NOT NULL,
+  `comment_count` INT UNSIGNED unsigned NOT NULL,
   `comment_author` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_author_IP` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `comment_date` datetime NOT NULL,
@@ -53,13 +53,10 @@ CREATE TABLE IF NOT EXISTS sc2021_schema.`candidates` (
 CREATE TABLE IF NOT EXISTS sc2021_schema.`login` (
   `login_ID` INT UNSIGNED unsigned NOT NULL AUTO_INCREMENT,
   `candidate_ID` INT UNSIGNED unsigned NOT NULL,
-  `user_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`login_ID`),
   CONSTRAINT fk_candidate_ID
   FOREIGN KEY (`candidate_ID`) 
 	REFERENCES `candidates`(`candidate_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
-
-
-
