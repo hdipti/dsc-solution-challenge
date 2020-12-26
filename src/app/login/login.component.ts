@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { routerTransition } from '../router.animations';
+import { Login } from '../core/data/model/Login';
+import { LoginService } from '../core/data/service/LoginService';
 
 @Component({
     selector: 'app-login',
@@ -9,7 +11,12 @@ import { routerTransition } from '../router.animations';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
+
+    login: Login = new Login();
+    submitted = false;
+
     constructor(
+      private loginService: LoginService,
       public router: Router
     ) {}
 
@@ -18,4 +25,7 @@ export class LoginComponent implements OnInit {
     onLoggedin() {
         localStorage.setItem('isLoggedin', 'true');
     }
+
+    /// implement get login based on username
+
 }

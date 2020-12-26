@@ -8,6 +8,7 @@ const routes: Routes = [
     { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
     { path: 'signup', loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule) },
     { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
+    { path: 'team-finder', loadChildren: () => import('./team-finder/team-finder.module').then(m => m.TeamFinderModule) },
     { path: 'error', loadChildren: () => import('./server-error/server-error.module').then(m => m.ServerErrorModule) },
     { path: 'access-denied', loadChildren: () => import('./access-denied/access-denied.module').then(m => m.AccessDeniedModule) },
     { path: 'not-found', loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundModule) },

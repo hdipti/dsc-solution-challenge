@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
+import { Candidate } from '../core/data/model/Candidate';
+import { CandidateService } from '../core/data/service/CandidateService';
 
-// import { AccountService, AlertService } from '@app/_services';
 
 @Component({
   selector: 'app-register',
@@ -12,11 +12,14 @@ import { first } from 'rxjs/operators';
 })
 export class RegisterComponent implements OnInit {
 
+    candidate: Candidate;
+    savedCandidate: Candidate;
     form: FormGroup;
     loading = false;
     submitted = false;
 
     constructor(
+        private candidateService: CandidateService,
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
@@ -27,7 +30,7 @@ export class RegisterComponent implements OnInit {
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             email: ['', Validators.required, Validators.email],
-            description:[''],
+            description:['', Validators.required],
             username: ['', Validators.required],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
@@ -39,25 +42,40 @@ export class RegisterComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        // this.alertService.clear();
-
         // stop here if form is invalid
         if (this.form.invalid) {
             return;
         }
-
         this.loading = true;
-        // this.accountService.register(this.form.value)
-        //     .pipe(first())
-        //     .subscribe(
-        //         data => {
-        //             this.alertService.success('Registration successful', { keepAfterRouteChange: true });
-        //             this.router.navigate(['../login'], { relativeTo: this.route });
-        //         },
-        //         error => {
-        //             this.alertService.error(error);
-        //             this.loading = false;
-        //         });
+        this.save();
     }
+
+    populateCandidateDetails() {
+        this.candidate = new Candidate();
+        this.candidate.firstName = this.form.get('firstName').value;
+        this.candidate.lastName = this.form.get('lastName').value;
+        this.candidate.email = this.form.get('email').value;
+        this.candidate.description = this.form.get('description').value;
+        this.candidate.userName = this.form.get('username').value;
+        this.candidate.password = this.form.get('password').value;
+
+    }
+
+    save() {
+
+        this.populateCandidateDetails();
+        this.candidateService.createCandidate(this.candidate)
+        .subscribe(
+            data => {
+            console.log(data);
+            this.savedCandidate = data;
+            },
+            error => console.log(error));
+        this.candidate = new Candidate();
+		this.gotoList();
+    }
+
+    gotoList() {
+    	this.router.navigate(['/login']);
+  	}
 }
