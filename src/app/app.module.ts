@@ -9,11 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
-import { HttpModule } from '@asx/core/http/http.module';
 
-import { LoggerService } from '@asx/core/logger/logger.service';
-// import { HttpComponent } from '@asx/core/http/http.component';
-// import { CompanyComponent } from '@asx/core/company/company.component';
+import { LoggerService } from './core/logger/logger.service';
 
 @NgModule({
     imports: [
@@ -23,7 +20,6 @@ import { LoggerService } from '@asx/core/logger/logger.service';
         HttpClientModule,
         LanguageTranslationModule,
         AppRoutingModule,
-        HttpModule,
         LoggerModule.forRoot({
             serverLoggingUrl: '/api/logs', 
             level: NgxLoggerLevel.DEBUG, 

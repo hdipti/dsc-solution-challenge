@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../router.animations';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Candidate } from '../core/data/model/Candidate';
 import { Login } from '../core/data/model/Login';
+import { CandidateService } from '../core/data/service/CandidateService';
 import { LoginService } from '../core/data/service/LoginService';
 
 @Component({
@@ -11,21 +14,54 @@ import { LoginService } from '../core/data/service/LoginService';
     animations: [routerTransition()]
 })
 export class LoginComponent implements OnInit {
-
-    login: Login = new Login();
+    
+    candidate: Candidate;
+	login: Login;
+    form: FormGroup;
+    loading = false;
     submitted = false;
 
     constructor(
-      private loginService: LoginService,
-      public router: Router
+      private candidateService: CandidateService,
+	  private loginService: LoginService,
+      private formBuilder: FormBuilder,
+      private router: Router,
     ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+	 	this.form = this.formBuilder.group({
+            username: ['', Validators.required],
+            password: ['', [Validators.required, Validators.minLength(6)]]
+		 });
+	}
 
     onLoggedin() {
-        localStorage.setItem('isLoggedin', 'true');
+		this.submitted = true;
+		this.checkLoginDetails();
     }
 
-    /// implement get login based on username
+    // convenience getter for easy access to form fields
+    get f() { return this.form.controls; }
+
+    checkLoginDetails(){
+		this.loginService.getLoginsByUsername(this.form.get('username').value, this.form.get('password').value)
+		//this.candidateService.getCandidatesList()
+        .subscribe(
+            data => {
+            console.log(data);
+			this.loginSuccess();
+            },
+            error => {
+				this.router.navigate(['/access-denied']);
+				console.log(error);
+			});
+        this.candidate = new Candidate();
+	}
+
+    loginSuccess() {
+		localStorage.setItem('username', this.form.get('username').value);
+		localStorage.setItem('isLoggedin', 'true');
+    	this.router.navigate(['/team-finder']);
+  	}
 
 }

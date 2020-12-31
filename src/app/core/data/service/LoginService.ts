@@ -31,8 +31,8 @@ export class LoginService {
 		return this.http.get(this.baseUrl);
 	}
 	
-	getLoginsByCandidateId(candidateId: number): Observable<any> {
-		return this.http.get(`${this.baseUrl}/candidateId/${candidateId}`);
+	getLoginsByUsername(username: string, password: string): Observable<any> {
+		return this.http.get(`${this.baseUrl}/username/${username}/password/${password}`);
 	}
 	
 	deleteAll(): Observable<any> {

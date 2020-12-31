@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
  
 @Injectable({
@@ -7,12 +7,22 @@ import { Observable } from 'rxjs';
 })
 export class CandidateService {
 	
-	private baseUrl = 'http://localhost:8080/api/candidates';
+	private baseUrl = 'http://[::1]:8080/api/candidates';
+	corsUrl = 'https://cors-anywhere.herokuapp.com/';
+	  httpOptions = {
+	      headers: new HttpHeaders({
+	        'Access-Control-Allow-Origin': '*',
+	        'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept',
+	        'Access-Control-Allow-Methods': 'GET'//,
+	       // 'Content-Type': 'application/ms-excel'
+	      }),
+	      //responseType: 'text' as 'text'
+	    }; 
 	
 	constructor(private http: HttpClient) { }
 	
 	getCandidate(id: number): Observable<any> {
-		return this.http.get(`${this.baseUrl}/${id}`);
+		return this.http.get(`${this.corsUrl}`+`${this.baseUrl}/${id}`, this.httpOptions);
 	}
 
 	createCandidate(candidate: any): Observable<any> {
@@ -38,5 +48,9 @@ export class CandidateService {
 	deleteAll(): Observable<any> {
 		return this.http.delete(this.baseUrl);
 	}
-    
+	
+	getCandidateByLoginDetails(username: string, password: string): Observable<any> {
+		return this.http.get(`${this.corsUrl}`+`http://localhost:8080/api/login?username=${username}&password=${password}`, this.httpOptions);
+	}
+	
 }

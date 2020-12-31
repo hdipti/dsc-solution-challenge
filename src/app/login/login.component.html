@@ -3,19 +3,28 @@
         <div class="col-md-4">
             <img src="assets/images/logo.png" width="150px" class="user-avatar" />
             <h1>Team Finder</h1>
-            <form role="form">
+            <form [formGroup]="form" (ngSubmit)="onLoggedin()">
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="text" ng-model="name" class="form-control input-underline input-lg" id="" placeholder="{{ 'Email' | translate }}">
+                        <input type="text" formControlName="username" class="form-control input-underline input-lg" 
+                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" ng-model="name" placeholder="{{ 'Email' | translate }}">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" class="form-control input-underline input-lg" id="" placeholder="{{ 'Password' | translate }}">
+                        <input type="password" class="form-control input-underline input-lg" 
+                        formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="{{ 'Password' | translate }}">
                     </div>
                 </div>
-                <a class="btn rounded-btn" [routerLink]="['/team-finder']" (click)="onLoggedin()">{{ 'Log in' | translate }}</a>
-                &nbsp;
-                <a class="btn rounded-btn" [routerLink]="['/findteam']">{{ 'Cancel' | translate }}</a>
+                 <div class="form-group">
+                    <button class="btn rounded-btn">
+                        <span class="spinner-border spinner-border-sm mr-1"></span>
+                        Login
+                    </button> &nbsp;
+                    <button  class="btn rounded-btn" [routerLink]="['/findteam']">
+			           <span class="spinner-border spinner-border-sm mr-1"></span>
+			           Cancel
+			        </button>
+                </div>
             </form>
         </div>
     </div>

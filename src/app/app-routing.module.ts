@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 
 const routes: Routes = [
-    { path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule)}, //canActivate: [AuthGuard] },
-    { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+    { path: '', loadChildren: () => import('./layout/layout.module').then(m => m.LayoutModule) }, //canActivate: [AuthGuard] },
+    { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule), canActivate: [AuthGuard] },
     { path: 'signup', loadChildren: () => import('./signup/signup.module').then(m => m.SignupModule) },
     { path: 'register', loadChildren: () => import('./register/register.module').then(m => m.RegisterModule) },
     { path: 'team-finder', loadChildren: () => import('./team-finder/team-finder.module').then(m => m.TeamFinderModule) },
