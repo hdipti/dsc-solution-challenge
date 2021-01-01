@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
         this.candidate.lastName = this.form.get('lastName').value;
         this.candidate.email = this.form.get('email').value;
         this.candidate.description = this.form.get('description').value;
-        this.candidate.userName = this.form.get('username').value;
+        this.candidate.username = this.form.get('username').value;
         this.candidate.password = this.form.get('password').value;
 
     }

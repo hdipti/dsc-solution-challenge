@@ -5,7 +5,7 @@ import { BlogComponent } from './blog.component';
 
 import { BlogRoutingModule } from './blog-routing.module';
 import { PageHeaderModule } from './../../shared';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from '@sc2021/core/logger/logger.service';
 import { EditorComponent } from './editor/editor.component';
 import { EditorOptions } from './editor/editoroptions';
 import { PostComponent } from './post/post.component';

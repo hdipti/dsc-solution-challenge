@@ -5,7 +5,7 @@ import { FindteamComponent } from './findteam.component';
 
 import { FindteamRoutingModule } from './findteam-routing.module';
 import { PageHeaderModule } from './../../shared';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from '@sc2021/core/logger/logger.service';
 
 @NgModule({
   imports: [CommonModule, FindteamRoutingModule, PageHeaderModule, NgbCarouselModule, NgbAlertModule],

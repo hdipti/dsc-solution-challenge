@@ -4,7 +4,7 @@ import { Sc2021Component } from './sc2021.component';
 
 import { Sc2021RoutingModule } from './sc2021-routing.module';
 import { PageHeaderModule } from './../../shared';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from '@sc2021/core/logger/logger.service';
 
 @NgModule({
   imports: [CommonModule, Sc2021RoutingModule, PageHeaderModule,],

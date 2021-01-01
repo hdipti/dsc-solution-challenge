@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { ComponentBase } from 'buildmotion-core';
 import { Router } from '@angular/router';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from './../../../core/logger/logger.service';
 
 @Component({
   selector: 'app-post',

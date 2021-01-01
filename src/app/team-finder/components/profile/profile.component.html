@@ -1,0 +1,29 @@
+<nav class="sidebar" [ngClass]="{sidebarPushRight: isActive, collapsed: collapsed}">
+    <div class="list-group">
+        <a routerLink="/home" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-home"></i>&nbsp;
+            <span>{{ 'Home' | translate }}</span>
+        </a>
+        <a [routerLink]="['/sc2021']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-tasks"></i>&nbsp;
+            <span>{{ 'Solution Challenge 2021' | translate }}</span>
+        </a>
+        <a [routerLink]="['/findteam']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-user-circle"></i>&nbsp;
+            <span>{{ 'Find team mates' | translate }}</span>
+        </a>
+        <a [routerLink]="['/blog']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-pencil"></i>&nbsp;
+            <span>{{ 'Blog' | translate }}</span>
+        </a>
+        <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            <i class="fa fa-fw fa-google"></i>&nbsp;
+            <span>{{ 'About Us' | translate }}</span>
+        </a>
+ 	</div>
+
+    <div class="toggle-button" [ngClass]="{collapsed: collapsed}" (click)="toggleCollapsed()">
+        <i class="fa fa-fw fa-angle-double-{{collapsed?'right':'left'}}"></i>&nbsp;
+        <span>{{ 'Hide Profile' | translate }}</span>
+    </div>
+</nav>

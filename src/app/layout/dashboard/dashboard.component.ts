@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from './../../core/logger/logger.service';
 
 @Component({
     selector: 'app-dashboard',

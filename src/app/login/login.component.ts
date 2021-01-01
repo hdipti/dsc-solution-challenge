@@ -3,9 +3,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { routerTransition } from '../router.animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Candidate } from '../core/data/model/Candidate';
-import { Login } from '../core/data/model/Login';
+import { CacheService } from '../core/data/service/CacheService';
 import { CandidateService } from '../core/data/service/CandidateService';
-import { LoginService } from '../core/data/service/LoginService';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-login',
@@ -15,18 +15,18 @@ import { LoginService } from '../core/data/service/LoginService';
 })
 export class LoginComponent implements OnInit {
     
-    candidate: Candidate;
-	login: Login;
     form: FormGroup;
     loading = false;
     submitted = false;
+	userFound = false;
+	candidates: Candidate[] = [];
 
     constructor(
-      private candidateService: CandidateService,
-	  private loginService: LoginService,
+      private cacheService: CacheService,
+	  private candidateService: CandidateService,
       private formBuilder: FormBuilder,
       private router: Router,
-    ) {}
+    ) {	}
 
     ngOnInit() {
 	 	this.form = this.formBuilder.group({
@@ -44,24 +44,32 @@ export class LoginComponent implements OnInit {
     get f() { return this.form.controls; }
 
     checkLoginDetails(){
-		this.loginService.getLoginsByUsername(this.form.get('username').value, this.form.get('password').value)
-		//this.candidateService.getCandidatesList()
-        .subscribe(
-            data => {
-            console.log(data);
-			this.loginSuccess();
-            },
-            error => {
-				this.router.navigate(['/access-denied']);
-				console.log(error);
-			});
-        this.candidate = new Candidate();
+		this.candidateService.getCandidatesList()
+		.subscribe(
+		 data => { 
+			this.candidates = data;
+		    console.log(this.candidates);
+		    this.candidates.forEach(candidate => { 
+				if(!this.userFound && candidate.username === this.form.get('username').value &&
+				   candidate.password === this.form.get('password').value){
+					this.cacheService.set("candidates", this.candidates)
+					this.loginSuccess();
+				};
+		  	})
+		  },
+		  error => {
+			console.log(error);
+			this.router.navigate(['/error']);
+		});
+		this.router.navigate(['/access-denied']);
 	}
 
     loginSuccess() {
+		this.userFound = true;
 		localStorage.setItem('username', this.form.get('username').value);
 		localStorage.setItem('isLoggedin', 'true');
     	this.router.navigate(['/team-finder']);
+		
   	}
 
 }

@@ -4,7 +4,7 @@ import { AboutComponent } from './about.component';
 
 import { AboutRoutingModule } from './about-routing.module';
 import { PageHeaderModule } from './../../shared';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from './../../core/logger/logger.service';
 
 @NgModule({
   imports: [CommonModule, AboutRoutingModule, PageHeaderModule,],

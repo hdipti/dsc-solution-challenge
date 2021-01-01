@@ -3,7 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths" : {
-      "@asx/*": ["./src/app/*"],
+      "@sc2021/*": ["./src/app/*"],
       "@output/*": ["./output/*"]
      },
     "importHelpers": true,

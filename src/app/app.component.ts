@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoggerService } from '@asx/core/logger/logger.service';
+import { LoggerService } from '@sc2021/core/logger/logger.service';
 
 @Component({
     selector: 'app-root',

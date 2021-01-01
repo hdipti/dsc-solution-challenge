@@ -10,6 +10,8 @@ import { routerTransition } from '../router.animations';
 })
 export class TeamFinderComponent implements OnInit {
 
+  collapedSideBar: boolean;
+
   constructor() { }
 
   ngOnInit() {
@@ -18,6 +20,9 @@ export class TeamFinderComponent implements OnInit {
   onLoggedin() {
         localStorage.setItem('isLoggedin', 'true');
     }
-
+ 
+	receiveCollapsed($event) {
+	    this.collapedSideBar = $event;
+	}
 
 }
